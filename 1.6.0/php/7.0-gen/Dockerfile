@@ -23,9 +23,8 @@ ENV PATH $PATH:/opt/protoc/bin
 RUN git clone -b v${GRPC_RELEASE_TAG} https://github.com/grpc/grpc \
     && cd grpc \
     && git submodule update --init \
-    && make grpc_php_plugin
-
-RUN mkdir -p /opt/grpc \
+    && make grpc_php_plugin \
+    && mkdir -p /opt/grpc \
     && mv /tmp/grpc/bins/opt /opt/grpc/bin
 
 RUN rm -rf /tmp/*
